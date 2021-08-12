@@ -1,0 +1,25 @@
+{
+  "name": "sprintproject1",
+  "version": "1.0.0",
+  "description": "Sprint Project 1 ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/cristian.villarreal1989/sprintproject1.git"
+  },
+  "keywords": [
+    "api",
+    "expressjs",
+    "javascript",
+    "node"
+  ],
+  "author": "Cristian Villarreal @cristian.villarreal1989",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/cristian.villarreal1989/sprintproject1/issues"
+  },
+  "homepage": "https://gitlab.com/cristian.villarreal1989/sprintproject1#readme"
+}
