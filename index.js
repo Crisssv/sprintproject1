@@ -5,6 +5,10 @@ const users = require('./routes/users');
 const products = require('./routes/products');
 const app = express();
 const port = 3000;
+const validarProductoId = require('./middlewares/products');
+
+
+app.use(express.json());
 
 app.use('/users',users);
 

@@ -1,12 +1,20 @@
 const express = require('express');
 const router = express.Router();
-
+let products = require('../models/products');
+const validateProductId = require('../middlewares/products');
 
 
 router.get('/', function(req,res){
 
-    res.send('Index productos');
+    res.json({'products':products})
 
+
+})
+
+router.post('/', validateProductId, function (req,res){
+    products.push(req.body);
+    res.json({'products':products})
+    
 
 })
 
