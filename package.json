@@ -24,6 +24,8 @@
   "homepage": "https://gitlab.com/cristian.villarreal1989/sprintproject1#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }

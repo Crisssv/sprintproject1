@@ -1,8 +1,18 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 const express = require ('express');
+const users = require('./routes/users');
+const products = require('./routes/products');
 const app = express();
-const port = 3008;
+const port = 3000;
+
+app.use('/users',users);
+
+app.use('/products', products);
+
+
+
+
 
 
 const swaggerOptions = {
@@ -29,9 +39,7 @@ const swaggerOptions = {
  *  post:
  *
  */
-app.post('/estudiantes', (req, res) => {
-    res.status(201).send();
-  });
+
 
   app.listen(port, function() {
 
