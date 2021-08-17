@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 let products = require('../models/products');
-const validateProductId = require('../middlewares/products');
+const validateProductId = require('../middlewares/middleware');
 
 
 router.get('/', function(req,res){
