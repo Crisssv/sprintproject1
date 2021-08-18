@@ -19,8 +19,20 @@ const login = (username, password) => {
     }
 }
 
+const searchUser = (username) => {
+
+    let userFound = users.find(user => user.username === username);
+    if (userFound){
+        return "Usuario Registrado"
+    }else{
+        return "Usuario no Registrado"
+    }
+
+}
+
 
 exports.newUser = newUser;
 exports.login = login;
+exports.searchUser = searchUser;
 
 

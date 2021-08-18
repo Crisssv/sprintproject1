@@ -3,16 +3,19 @@ const swaggerUI = require('swagger-ui-express');
 const express = require ('express');
 const users = require('./routes/users');
 const products = require('./routes/products');
+const orders = require('./routes/orders');
 const app = express();
 const port = 3000;
 
 
-
+app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use('/users',users);
+app.use('/',users);
 
-app.use('/products', products);
+app.use('/', products);
+
+app.use('/', orders);
 
 
 
@@ -26,23 +29,15 @@ const swaggerOptions = {
         version: '1.0.0'
       }
     },
-    apis: ['./index.js'],
+    apis: ['../routes/users'],
   };
   
   const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
-  app.use('/api-docs',
-   swaggerUI.serve,
-   swaggerUI.setup(swaggerDocs));
+  app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
    
    
 
-   /**
- * @swagger
- * /estudiantes:
- *  post:
- *
- */
 
 
   app.listen(port, function() {

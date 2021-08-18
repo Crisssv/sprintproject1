@@ -4,13 +4,23 @@ let users = require('../models/users');
 const funcUsers = require('../controllers/users'); 
 
 
+/**
+ * @swagger
+ * /users
+ *   get:
+ *     description: lista todos los users
+ *       responses: 
+ *         200: 
+ *         description: Sucess
+ */
 
-router.get('/', function(req,res){
 
-    res.json({msj:"Users: ",users})
+router.get('/users', function(req,res){
+
+    res.json(users);
 })
 
-router.post('/', function(req,res){
+router.post('/users', function(req,res){
 
     funcUsers.newUser(req.body);
     res.json({msj:'New User:',users})

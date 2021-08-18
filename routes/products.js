@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 let products = require('../models/products');
-const validateProductId = require('../middlewares/middleware');
+const middle = require('../middlewares/middleware');
 
 
 router.get('/', function(req,res){
@@ -11,7 +11,8 @@ router.get('/', function(req,res){
 
 })
 
-router.post('/', validateProductId, function (req,res){
+router.post('/',  function (req,res){
+   
     products.push(req.body);
     res.json({'products':products})
     
