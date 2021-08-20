@@ -12,7 +12,7 @@ router.get('/orders', function(req,res){
 
 })
 
-router.get('/orders/:idusername', function(req,res){
+router.get('/orders/:idusername', middle.registerUser, function(req,res){
     
     
     res.json(funcO.serachOrders(req.params.idusername));
@@ -21,7 +21,7 @@ router.get('/orders/:idusername', function(req,res){
 })
 
 
-router.post('/orders',  function (req,res){
+router.post('/orders', middle.registerUser, function (req,res){
     
     funcO.newOrder(req.body);
     res.json({'Orders': orders});

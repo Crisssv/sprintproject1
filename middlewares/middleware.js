@@ -1,4 +1,5 @@
 const func = require('../controllers/users'); 
+const users = require('../models/users');
 
 
 const validateProductId = (req,res,next) =>{
@@ -9,8 +10,16 @@ const validateProductId = (req,res,next) =>{
 
 const userAdmin = (req,res,next) => {
 
-    req.params.idusername
-    next();
+    let userAdmin = users.filter(user => user.id == req.params.id);
+    
+    if (userAdmin[0].rol == "admin"){
+        return next();
+    }else{
+        return res.sendStatus(401);
+    }
+
+          
+      
 
 }
 
@@ -26,15 +35,16 @@ const auth = (req,res,next) => {
 }
 
 const registerUser = (req,res,next) =>{
-
-        let userFound = users.find(user => req.body.username === username);
-        if (userFound){
-            res.json({msj:"Usuario registrado"}); 
+    
+        let userFound = users.filter(user => user.id == req.params.id);
+    
+        if (userFound.length > 0){
+            return next(); 
         }else{
-            res.json({msj:"Usuario no registrado"}); 
+            return res.sendStatus(401); 
         }
     
-        next();
+        
 
 
 }

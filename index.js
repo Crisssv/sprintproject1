@@ -29,7 +29,7 @@ const swaggerOptions = {
         version: '1.0.0'
       }
     },
-    apis: ['../routes/users'],
+    apis: ['index.js'],
   };
   
   const swaggerDocs = swaggerJsDoc(swaggerOptions);

@@ -1,4 +1,5 @@
 let users = require('../models/users');
+let products = require('../models/products');
 
 
 const newUser = (newUser) =>{
@@ -22,6 +23,10 @@ const newUser = (newUser) =>{
 
 const allUsers = () =>{
     return users;
+}
+
+const allProducts = () =>{
+    return products;
 }
 
 const deleteUser = (id) => {
@@ -59,6 +64,7 @@ exports.login = login;
 exports.searchUser = searchUser;
 exports.deleteUser = deleteUser;
 exports.allUsers = allUsers;
+exports.allProducts = allProducts;
 
 
 

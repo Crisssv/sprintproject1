@@ -4,14 +4,14 @@ let products = require('../models/products');
 const middle = require('../middlewares/middleware');
 
 
-router.get('/', function(req,res){
+router.get('/products', function(req,res){
 
     res.json({'products':products})
 
 
 })
 
-router.post('/',  function (req,res){
+router.post('/products',  function (req,res){
    
     products.push(req.body);
     res.json({'products':products})

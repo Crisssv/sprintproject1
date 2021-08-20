@@ -2,21 +2,19 @@ const express = require('express');
 const router = express.Router();
 let users = require('../models/users');
 const funcUsers = require('../controllers/users'); 
+const middle = require('../middlewares/middleware');
+
+
 
 
 /**
  * @swagger
- * /users
- *   get:
- *     description: lista todos los users
- *       responses: 
- *         200: 
- *         description: Sucess
+ * /users:
+ *  get:
+ *
  */
-
-
 router.get('/users', function(req,res){
-
+    res.status(201).send();
     res.json(funcUsers.allUsers());
 })
 
@@ -27,13 +25,21 @@ router.post('/users', function(req,res){
 
 })
 
+router.get('/users/:id/allOrders', middle.registerUser,  function(req,res){
+
+    res.json(funcUsers.allProducts());
+})
+
+
 router.delete('/users/:id',function(req,res){
 
     res.json(funcUsers.deleteUser(req.params.id));
 
 });
 
-router.put('/users/:id',function(req,res){
+router.put('/users/:iduser/orders/:idorder', middle.userAdmin, function(req,res){
+
+
 
 });
 
