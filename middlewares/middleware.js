@@ -1,13 +1,20 @@
 const func = require('../controllers/users'); 
 
 
-function validateProductId(req,res,next){
+const validateProductId = (req,res,next) =>{
     console.log('producto validado');
     next();
 
 }
 
-function auth(req,res,next){
+const userAdmin = (req,res,next) => {
+
+    req.params.idusername
+    next();
+
+}
+
+const auth = (req,res,next) => {
 
     const userLog = func.login(req.body.username, req.body.password);
     if (userLog){
@@ -18,7 +25,7 @@ function auth(req,res,next){
     next();
 }
 
-function registerUser (req,res,next){
+const registerUser = (req,res,next) =>{
 
         let userFound = users.find(user => req.body.username === username);
         if (userFound){
@@ -32,6 +39,7 @@ function registerUser (req,res,next){
 
 }
 
-module.exports = validateProductId;
-module.exports = auth;
-module.exports = registerUser;
+exports.validateProductId = validateProductId;
+exports.auth = auth;
+exports.registerUser = registerUser;
+exports.userAdmin = userAdmin;

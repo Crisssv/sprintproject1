@@ -17,17 +17,29 @@ const funcUsers = require('../controllers/users');
 
 router.get('/users', function(req,res){
 
-    res.json(users);
+    res.json(funcUsers.allUsers());
 })
 
 router.post('/users', function(req,res){
-
+    
     funcUsers.newUser(req.body);
     res.json({msj:'New User:',users})
 
 })
 
-router.post('/login', function(req,res){
+router.delete('/users/:id',function(req,res){
+
+    res.json(funcUsers.deleteUser(req.params.id));
+
+});
+
+router.put('/users/:id',function(req,res){
+
+});
+
+
+
+router.post('/users/login', function(req,res){
     
     res.json(funcUsers.login(req.body.username, req.body.password));
     

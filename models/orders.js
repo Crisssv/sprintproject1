@@ -1,33 +1,36 @@
 let orders = [
     {
-        "status": 'Nuevo',
+        "id": 1,    
+        "status": 1,
         "time": 12.30,
         "number": 72,
-        "description": "hamburguesa",
-        "pay": 660,
-        "username": "cristian",
+        "description": 1,
+        "pay": 2,
+        "username": 2,
         "adress": 'Puerto espaniol 1079',
 
 
     },
     {
-        "status": 'Nuevo',
+        "id": 2,    
+        "status": 1,
         "time": 12.30,
         "number": 72,
-        "description": "hamburguesa",
-        "pay": 660,
-        "username": "cristian",
+        "description": 1,
+        "pay": 2,
+        "username": 1,
         "adress": 'Puerto espaniol 1079',
 
 
     },
     {
-        "status": 'Nuevo',
+        "id": 3,    
+        "status": 1,
         "time": 12.30,
         "number": 72,
-        "description": "hamburguesa",
-        "pay": 660,
-        "username": "raul",
+        "description": 1,
+        "pay": 2,
+        "username": 1,
         "adress": 'Puerto espaniol 1079',
 
 

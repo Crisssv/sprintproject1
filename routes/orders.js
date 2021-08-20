@@ -3,11 +3,11 @@ const router = express.Router();
 const funcO = require('../controllers/orders');
 const middle = require('../middlewares/middleware');
 
-let orders = require('../models/orders');
+
 
 router.get('/orders', function(req,res){
 
-    res.json({msj:'Orders: ',orders});
+    res.json(funcO.allOrders());
 
 
 })
@@ -21,12 +21,28 @@ router.get('/orders/:idusername', function(req,res){
 })
 
 
-router.post('/',  function (req,res){
+router.post('/orders',  function (req,res){
     
-    products.push(req.body);
+    funcO.newOrder(req.body);
     res.json({'Orders': orders});
     
 
 })
+
+
+router.put('/orders/:id', middle.userAdmin, function(req,res){
+    
+    const changeStatus = funcO.changeStatus(req.params.id,req.body.status);
+    res.json(changeStatus);
+
+});
+
+router.delete('/orders/:id',function(req,res){
+
+    
+
+});
+
+
 
 module.exports = router;

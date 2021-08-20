@@ -1,17 +1,40 @@
 let users = require('../models/users');
 
 
-
 const newUser = (newUser) =>{
+    let nUser = [{
+        "id": users.length+1,
+        "username": newUser.username,
+        "lastname": newUser.nameLastName,
+        "email": newUser.email,
+        "tel": newUser.tel,
+        "adress": newUser.adress,
+        "password": newUser.password,
+        "rol": newUser.rol,
+    }];
+    
 
-    return users.push(newUser);
+    users.push(nUser);
+    
 
 
 }
 
-const login = (username, password) => {
-    let usuariovalido =  users.find(user => user.username === username && user.password === password);
+const allUsers = () =>{
+    return users;
+}
 
+const deleteUser = (id) => {
+
+    users = users.filter(user => user.id != id);
+    return "Usuario borrado correctamente";
+
+}
+
+const login = (username, password) => {
+   
+    let usuariovalido =  users.find(user => user.username == username && user.password == password);
+    
     if (usuariovalido){
         return "usuariovalido"
     }else{
@@ -34,5 +57,8 @@ const searchUser = (username) => {
 exports.newUser = newUser;
 exports.login = login;
 exports.searchUser = searchUser;
+exports.deleteUser = deleteUser;
+exports.allUsers = allUsers;
+
 
 

@@ -14,5 +14,41 @@ const serachOrders = (username) => {
 
 }
 
+const allOrders = () =>{
+    return orders;
+}
+
+const newOrder = (order) => {
+
+    let nOrder = [{
+        "id": orders.length+1,    
+        "status": 1,
+        "time": order.time,
+        "number": orders.length+1,
+        "description": order.description,
+        "pay": order.pay,
+        "username": order.username,
+        "adress": order.adress,
+    }];
+    
+
+    orders.push(nOrder);    
+
+
+}
+
+const changeStatus = (id,status) => {
+    
+    orders[id].status = status;
+    return orders[id];
+        
+
+}
+
+
+
 exports.serachOrders = serachOrders;
+exports.newOrder = newOrder;
+exports.allOrders = allOrders;
+exports.changeStatus = changeStatus;
 

@@ -2,7 +2,7 @@ let users = [
                 {
                     "id":1,
                     "username": 'Cristian',
-                    "nameLastName": 'Villarreal',
+                    "lastName": 'Villarreal',
                     "email": 'cristian.villarreal1989@gmail.com',
                     "tel": 15487897,
                     "adress": 'Puerto espaniol 1079',
@@ -14,7 +14,7 @@ let users = [
                 {
                     "id":2,
                     "username": 'User2',
-                    "nameLastName": 'User2',
+                    "lastName": 'User2',
                     "email": 'User2@gmail.com',
                     "tel": 15487897,
                     "adress": 'Puerto espaniol 1079',
