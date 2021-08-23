@@ -8,35 +8,32 @@ const app = express();
 const port = 3000;
 
 
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'Api de Restaurante',
+      version: '1.0.0'
+    }
+  },
+  apis: ['./routes/users.js','./routes/products.js'],
+  explorer: true
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use('/',users);
+app.use('/users',users);
 
-app.use('/', products);
+app.use('/products', products);
 
-app.use('/', orders);
-
-
+app.use('/orders', orders);
 
 
 
-
-const swaggerOptions = {
-    swaggerDefinition: {
-      info: {
-        title: 'Api de Restaurante',
-        version: '1.0.0'
-      }
-    },
-    apis: ['index.js'],
-  };
-  
-  const swaggerDocs = swaggerJsDoc(swaggerOptions);
-
-  app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
-   
-   
 
 
 

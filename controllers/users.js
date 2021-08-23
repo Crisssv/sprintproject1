@@ -5,7 +5,7 @@ let products = require('../models/products');
 const newUser = (newUser) =>{
     let nUser = [{
         "id": users.length+1,
-        "username": newUser.username,
+        "name": newUser.username,
         "lastname": newUser.nameLastName,
         "email": newUser.email,
         "tel": newUser.tel,

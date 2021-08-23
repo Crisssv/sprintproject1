@@ -3,15 +3,20 @@ const router = express.Router();
 let products = require('../models/products');
 const middle = require('../middlewares/middleware');
 
-
-router.get('/products', function(req,res){
+/**
+ * @swagger
+ * /products:
+ *  get:
+ *    description:   
+ */
+router.get('/', function(req,res){
 
     res.json({'products':products})
 
 
 })
 
-router.post('/products',  function (req,res){
+router.post('/',  function (req,res){
    
     products.push(req.body);
     res.json({'products':products})

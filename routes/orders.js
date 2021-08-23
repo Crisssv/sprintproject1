@@ -5,14 +5,14 @@ const middle = require('../middlewares/middleware');
 
 
 
-router.get('/orders', function(req,res){
+router.get('/', function(req,res){
 
     res.json(funcO.allOrders());
 
 
 })
 
-router.get('/orders/:idusername', middle.registerUser, function(req,res){
+router.get('/:idusername', middle.registerUser, function(req,res){
     
     
     res.json(funcO.serachOrders(req.params.idusername));
@@ -21,7 +21,7 @@ router.get('/orders/:idusername', middle.registerUser, function(req,res){
 })
 
 
-router.post('/orders', middle.registerUser, function (req,res){
+router.post('/', middle.registerUser, function (req,res){
     
     funcO.newOrder(req.body);
     res.json({'Orders': orders});
@@ -30,14 +30,14 @@ router.post('/orders', middle.registerUser, function (req,res){
 })
 
 
-router.put('/orders/:id', middle.userAdmin, function(req,res){
+router.put('/:id', middle.userAdmin, function(req,res){
     
     const changeStatus = funcO.changeStatus(req.params.id,req.body.status);
     res.json(changeStatus);
 
 });
 
-router.delete('/orders/:id',function(req,res){
+router.delete('/:id',function(req,res){
 
     
 

@@ -11,33 +11,90 @@ const middle = require('../middlewares/middleware');
  * @swagger
  * /users:
  *  get:
- *
+ *    description: lista de todos los usuarios de la base de datos
+ *    responses:
+ *      200:
+ *        description: Success
  */
-router.get('/users', function(req,res){
-    res.status(201).send();
-    res.json(funcUsers.allUsers());
-})
 
-router.post('/users', function(req,res){
-    
+
+
+router.get('/', function(req,res){
+   res.json(funcUsers.allUsers());
+})
+/**
+* @swagger
+* /users:
+*  post:
+*    tags:
+*    - "User"
+*    summary: "Add New User"
+*    description: "Add new user"
+*    operationId: "addUser"
+*    consumes:
+*    produces:
+*    parameters:
+*    - in: "id"
+*      name: "id"
+*      description: 
+*    - in: "username"
+*      name: "username"
+*      type: string
+*      description: 
+*      required: true
+*    - in: "lastName"
+*      name: "lastName"
+*      type: string
+*      description: 
+*      required: true
+*    - in: "email"
+*      name: "email"
+*      type: string
+*      description: 
+*      required: true
+*    - in: "tel"
+*      name: "tel"
+*      type: string
+*      description: 
+*      required: true
+*    - in: "adress"
+*      name: "adress"
+*      type: string
+*      description: 
+*      required: true
+*    - in: "password"
+*      name: "password"
+*      type: string
+*      description: 
+*      required: true
+*    - in: "rol"
+*      name: "rol"
+*      type: string
+*      description: 
+*      required: true
+*    responses:
+*      "405":
+*/
+router.post('/', function(req,res){
+    console.log(req.body);
     funcUsers.newUser(req.body);
     res.json({msj:'New User:',users})
 
 })
 
-router.get('/users/:id/allOrders', middle.registerUser,  function(req,res){
+router.get('/:id/allOrders', middle.registerUser,  function(req,res){
 
     res.json(funcUsers.allProducts());
 })
 
 
-router.delete('/users/:id',function(req,res){
+router.delete('/:id',function(req,res){
 
     res.json(funcUsers.deleteUser(req.params.id));
 
 });
 
-router.put('/users/:iduser/orders/:idorder', middle.userAdmin, function(req,res){
+router.put('/:iduser/orders/:idorder', middle.userAdmin, function(req,res){
 
 
 
