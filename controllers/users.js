@@ -5,13 +5,13 @@ let products = require('../models/products');
 const newUser = (newUser) =>{
     let nUser = [{
         "id": users.length+1,
-        "name": newUser.username,
-        "lastname": newUser.nameLastName,
+        "username": newUser.name,
+        "nameLastName": newUser.lastName,
         "email": newUser.email,
-        "tel": newUser.tel,
+        "phone": newUser.phone,
         "adress": newUser.adress,
         "password": newUser.password,
-        "rol": newUser.rol,
+        "role": newUser.role,
     }];
     
 
@@ -37,9 +37,10 @@ const deleteUser = (id) => {
 }
 
 const login = (username, password) => {
-   
-    let usuariovalido =  users.find(user => user.username == username && user.password == password);
+    console.log(username);
+    let usuariovalido =  users.find(user => (user.username || user.email) == username  && user.password == password);
     
+    console.log(usuariovalido);
     if (usuariovalido){
         return "usuariovalido"
     }else{

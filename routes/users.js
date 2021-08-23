@@ -11,6 +11,8 @@ const middle = require('../middlewares/middleware');
  * @swagger
  * /users:
  *  get:
+ *    tags:
+ *    - "User"
  *    description: lista de todos los usuarios de la base de datos
  *    responses:
  *      200:
@@ -34,49 +36,53 @@ router.get('/', function(req,res){
 *    consumes:
 *    produces:
 *    parameters:
-*    - in: "id"
-*      name: "id"
-*      description: 
-*    - in: "username"
-*      name: "username"
+*    - name : "id"
+*      description: "id"
+*      in: formData
+*      required: 
+*      type: string  
+*    - name : "username"
+*      description: "name" 
+*      in: formData
+*      required:
+*      type: string 
+*    - name : "nameLastName"
+*      description: "lastName"
+*      in: formData
+*      required:
+*      type: string 
+*    - name : "email"
+*      description: "email"
+*      in: formData
+*      required:
+*      type: string  
+*    - name : "phone"
+*      description: "phone"
+*      in: formData
+*      required:
+*      type: string 
+*    - name : "adress"
+*      description: "adress"
+*      in: formData
+*      required:
 *      type: string
-*      description: 
-*      required: true
-*    - in: "lastName"
-*      name: "lastName"
+*    - name : "password"
+*      description: "password"
+*      in: formData
+*      required:
 *      type: string
-*      description: 
-*      required: true
-*    - in: "email"
-*      name: "email"
+*    - name : "role"
+*      description: "role"
+*      in: formData
+*      required:
 *      type: string
-*      description: 
-*      required: true
-*    - in: "tel"
-*      name: "tel"
-*      type: string
-*      description: 
-*      required: true
-*    - in: "adress"
-*      name: "adress"
-*      type: string
-*      description: 
-*      required: true
-*    - in: "password"
-*      name: "password"
-*      type: string
-*      description: 
-*      required: true
-*    - in: "rol"
-*      name: "rol"
-*      type: string
-*      description: 
-*      required: true
 *    responses:
-*      "405":
+*      "200":
+*      desciption: Sucess   
 */
+
+
 router.post('/', function(req,res){
-    console.log(req.body);
     funcUsers.newUser(req.body);
     res.json({msj:'New User:',users})
 
@@ -100,9 +106,34 @@ router.put('/:iduser/orders/:idorder', middle.userAdmin, function(req,res){
 
 });
 
+/**
+* @swagger
+* /users/login:
+*  post:
+*    tags:
+*    - "User"
+*    summary: "Login"
+*    description: "Login"
+*    operationId: "Login"
+*    consumes:
+*    produces:
+*    parameters:
+*    - name : "username"
+*      description: "username or email" 
+*      in: formData
+*      required:
+*      type: string 
+*    - name : "password"
+*      description: "password"
+*      in: formData
+*      required:
+*      type: string
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
 
-
-router.post('/users/login', function(req,res){
+router.post('/login', function(req,res){
     
     res.json(funcUsers.login(req.body.username, req.body.password));
     
