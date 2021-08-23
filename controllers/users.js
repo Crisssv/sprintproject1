@@ -11,7 +11,7 @@ const newUser = (newUser) =>{
         "phone": newUser.phone,
         "adress": newUser.adress,
         "password": newUser.password,
-        "role": newUser.role,
+        "role": "user",
     }];
     
 
@@ -37,14 +37,14 @@ const deleteUser = (id) => {
 }
 
 const login = (username, password) => {
-    console.log(username);
-    let usuariovalido =  users.find(user => (user.username || user.email) == username  && user.password == password);
     
+    let usuariovalido =  users.find(user => ((user.username == username || user.email == username) && (user.password == password)));
+
     console.log(usuariovalido);
     if (usuariovalido){
-        return "usuariovalido"
+        return "usuario VALIDO"
     }else{
-        return "usuarioinvalido";
+        return "usuario NO VALIDO";
     }
 }
 
