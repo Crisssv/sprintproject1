@@ -16,7 +16,7 @@ const swaggerOptions = {
       version: '1.0.0'
     }
   },
-  apis: ['./routes/users.js','./routes/products.js'],
+  apis: ['./routes/users.js','./routes/products.js','./routes/orders.js'],
   explorer: true
 };
 

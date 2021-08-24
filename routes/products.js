@@ -7,7 +7,12 @@ const middle = require('../middlewares/middleware');
  * @swagger
  * /products:
  *  get:
- *    description:   
+ *    tags:
+ *    - "Product"
+ *    description: lista de todos los usuarios de la base de datos
+ *    responses:
+ *      200:
+ *        description: Success
  */
 router.get('/', function(req,res){
 

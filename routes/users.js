@@ -78,66 +78,6 @@ router.post('/user', function(req,res){
 
 })
 
-/**
-* @swagger
-* /users:
-*  post:
-*    tags:
-*    - "User"
-*    summary: ""
-*    description: "Add new user"
-*    operationId: "addUser"
-*    consumes:
-*    produces:
-*    parameters:
-*    - name : "username"
-*      description: "name" 
-*      in: formData
-*      required:
-*      type: string 
-*    - name : "nameLastName"
-*      description: "lastName"
-*      in: formData
-*      required:
-*      type: string 
-*    - name : "email"
-*      description: "email"
-*      in: formData
-*      required:
-*      type: string  
-*    - name : "phone"
-*      description: "phone"
-*      in: formData
-*      required:
-*      type: string 
-*    - name : "adress"
-*      description: "adress"
-*      in: formData
-*      required:
-*      type: string
-*    - name : "password"
-*      description: "password"
-*      in: formData
-*      required:
-*      type: string
-*    - name : "role"
-*      description: "password"
-*      in: formData
-*      required:
-*      type: string
-*    responses:
-*      "200":
-*      desciption: Sucess   
-*/
-
-
-router.post('/userAdmin/:id', function(req,res){
-    funcUsers.newUser(req.body);
-    res.json({msj:'New User:',users})
-
-})
-
-
 
 router.get('/:id/allOrders', middle.registerUser,  function(req,res){
 
