@@ -72,30 +72,11 @@ router.get('/', function(req,res){
 */
 
 
-router.post('/user', function(req,res){
-    funcUsers.newUser(req.body);
-    res.json({msj:'New User:',users})
+router.post('/', function(req,res){
+    
+    res.json(funcUsers.newUser(req.body));
 
 })
-
-
-router.get('/:id/allOrders', middle.registerUser,  function(req,res){
-
-    res.json(funcUsers.allProducts());
-})
-
-
-router.delete('/:id',function(req,res){
-
-    res.json(funcUsers.deleteUser(req.params.id));
-
-});
-
-router.put('/:iduser/orders/:idorder', middle.userAdmin, function(req,res){
-
-
-
-});
 
 /**
 * @swagger
@@ -130,6 +111,28 @@ router.post('/login', function(req,res){
     
 
 })
+
+
+
+router.get('/:id/allOrders', middle.registerUser,  function(req,res){
+
+    res.json(funcUsers.allProducts());
+})
+
+
+router.delete('/:id',function(req,res){
+
+    res.json(funcUsers.deleteUser(req.params.id));
+
+});
+
+router.put('/:iduser/orders/:idorder', middle.userAdmin, function(req,res){
+
+
+
+});
+
+
 
 
 

@@ -10,9 +10,9 @@ const validateProductId = (req,res,next) =>{
 
 const userAdmin = (req,res,next) => {
 
-    let userAdmin = users.filter(user => user.id == req.params.id);
+    let userAdmin = users.filter(user => user.id == req.params.iduser);
     
-    if (userAdmin[0].rol == "admin"){
+    if (userAdmin[0].role == "admin"){
         return next();
     }else{
         return res.sendStatus(401);
@@ -35,8 +35,8 @@ const auth = (req,res,next) => {
 }
 
 const registerUser = (req,res,next) =>{
-    
-        let userFound = users.filter(user => user.id == req.params.id);
+       
+        let userFound = users.filter(user => user.id == req.params.iduser);
     
         if (userFound.length > 0){
             return next(); 

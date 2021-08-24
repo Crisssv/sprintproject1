@@ -1,12 +1,15 @@
 let orders = require('../models/orders');
 const status = require('../models/status');
+const funcU = require('../controllers/users')
+const funcM = require('../controllers/users')
 
 
-const serachOrders = (username) => {
+const serachOrders = (iduser) => {
+
 
     let userOrders = [];
     for (let i = 0; i < orders.length; i++) {
-        if (orders[i].username == username){
+        if (orders[i].username == iduser){
             userOrders.push(orders[i]);
         }    
     }   
@@ -19,31 +22,56 @@ const allOrders = () =>{
     return orders;
 }
 
-//const searhStatus ();
 
-const newOrder = (order) => {
 
-    let nOrder = [{
+const newOrder = (order,iduser) => {
+    
+    let hour = new Date();
+    time = hour.getHours() + ':' + hour.getMinutes();
+    let nOrders = {
         "id": orders.length+1,    
         "status": 1,
-        "time": order.time,
+        "time": time,
         "number": orders.length+1,
-        "description": order.description,
-        "pay": order.pay,
-        "username": order.username,
-        "adress": order.adress,
-    }];
+        "detail": order.detail,
+        "total": 999,
+        "method": order.method,
+        "username": iduser,
+        "adress": funcU.searchAdress(iduser),
+    };
     
-
-    orders.push(nOrder);    
-
+    orders.push(nOrders);    
+    return orders;
 
 }
 
-const changeStatus = (id,status) => {
-    
-    orders[id].status = status;
-    return orders[id];
+const userView = (newOrder) => {
+
+
+    let nOrderUserView = {    
+        "status": 1,
+        "time": hour,
+        "number": orders.length+1,
+        "detail": order.detail,
+        "total": 999,
+        "method": order.method,
+        "username": funcU.searchUsername(iduser),
+        "adress": funcU.searchAdress(iduser),
+    };
+
+}
+
+const searchIndexOrder = (orderid) => {
+
+    return orders.findIndex(order => order.id == orderid);
+
+}
+
+const changeStatus = (idOrder,status) => {
+
+    const index = searchIndexOrder(idOrder);
+    orders[index].status = status;
+    return orders[index];
         
 
 }

@@ -22,33 +22,60 @@ router.get('/', function(req,res){
 
 })
 
-router.get('/:idusername', middle.registerUser, function(req,res){
+/**
+* @swagger
+* /orders/{iduser}:
+*  get:
+*    tags:
+*    - "Order"
+*    summary: ""
+*    description: "Show All Orders of the user"
+*    operationId: "ShowAllOrdersOfTheUser"
+*    paths:
+*    /orders/{iduser}:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required:
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.get('/:iduser', middle.registerUser, function(req,res){
     
     
-    res.json(funcO.serachOrders(req.params.idusername));
+    res.json(funcO.serachOrders(req.params.iduser));
 
 
 })
 
 /**
 * @swagger
-* /orders/1:
+* /orders/{iduser}:
 *  post:
 *    tags:
 *    - "Order"
 *    summary: ""
 *    description: "Make an Order"
 *    operationId: "makeOrder"
-*    consumes:
-*    produces:
+*    paths:
+*    /orders/{iduser}:
 *    parameters:
-*    - name : "description"
-*      description: "description" 
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required:
+*      type: integer 
+*    - name : "detail"
+*      description: "detail" 
 *      in: formData
 *      required:
 *      type: array 
-*    - name : "adress"
-*      description: "adress"
+*    - name : "method"
+*      description: "method"
 *      in: formData
 *      required:
 *      type: string
@@ -57,18 +84,76 @@ router.get('/:idusername', middle.registerUser, function(req,res){
 *      desciption: Sucess   
 */
 router.post('/:iduser', middle.registerUser, function (req,res){
-    console.log(req.body);
-    funcO.newOrder(req.body);
-    res.json({'Orders': orders});
+    
+    res.json(funcO.newOrder(req.body,req.params.iduser));
     
 
 })
 
+/**
+* @swagger
+* /orders/admin/{iduser}:
+*  get:
+*    tags:
+*    - "Order"
+*    summary: ""
+*    description: "Show All Orders ADMIN"
+*    operationId: "Show All Orders Admin"
+*    paths:
+*    /orders/admin/{iduser}:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required:
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
 
-router.put('/:id', middle.userAdmin, function(req,res){
+router.get('/admin/:iduser', middle.userAdmin, function(req,res){
+
+    res.json(funcO.allOrders());
+
+
+})
+
+/**
+* @swagger
+* /orders/{iduser}/{idorder}:
+*  put:
+*    tags:
+*    - "Order"
+*    summary: ""
+*    description: "Admin Change Status"
+*    operationId: "AdminChangeStatus"
+*    paths:
+*    /orders/{iduser}/{idorder}:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required:
+*      type: integer 
+*    - name : "idorder"
+*      description: "idorder" 
+*      in: path
+*      required:
+*      type: integer 
+*    - name : "status"
+*      description: "status" 
+*      in: formData
+*      required:
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.put('/:iduser/:idorder', middle.userAdmin, function(req,res){
     
-    const changeStatus = funcO.changeStatus(req.params.id,req.body.status);
-    res.json(changeStatus);
+    res.json(funcO.changeStatus(req.params.idorder,req.body.status));
 
 });
 
