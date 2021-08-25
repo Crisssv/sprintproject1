@@ -13,7 +13,7 @@ const searchEmail = (email) => {
 }
 
 const newUser = (newUser) => {
-    
+
     if (!searchEmail(newUser.email)) {
         let nUser = {
             "id": users.length + 1,
@@ -26,7 +26,7 @@ const newUser = (newUser) => {
             "role": "user",
         };
         users.push(nUser);
-        return users[users.length-1];
+        return users[users.length - 1];
     } else {
         return "The email already exists"
     }
@@ -76,8 +76,8 @@ const searchNameEmail = (userid) => {
 
 
 const searchUsername = (userid) => {
-    
-    
+
+
     return users[searchIndex(userid)].username;
 
 }
@@ -93,6 +93,26 @@ const searchUser = (username) => {
 
 }
 
+const updateUser = (userid, updateUser) => {
+
+    const index = searchIndex(userid);
+
+    let nUser = {
+        "id": userid,
+        "username": users[index].username,
+        "nameLastName": updateUser.nameLastName,
+        "email": users[index].email,
+        "phone": updateUser.phone,
+        "adress": updateUser.adress,
+        "password": updateUser.password,
+        "role": updateUser.role,
+    };
+    users[index] = nUser;
+    return users[index];
+
+
+}
+
 
 exports.newUser = newUser;
 exports.login = login;
@@ -101,6 +121,7 @@ exports.deleteUser = deleteUser;
 exports.allUsers = allUsers;
 exports.searchUsername = searchUsername;
 exports.searchAdress = searchAdress;
+exports.updateUser = updateUser;
 
 
 

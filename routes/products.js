@@ -10,7 +10,7 @@ const funcP = require('../controllers/products');
  *  get:
  *    tags:
  *    - "Product"
- *    description: lista de todos los usuarios de la base de datos
+ *    description: Show all products
  *    responses:
  *      200:
  *        description: Success

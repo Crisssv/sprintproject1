@@ -4,6 +4,7 @@ const express = require ('express');
 const users = require('./routes/users');
 const products = require('./routes/products');
 const orders = require('./routes/orders');
+const methods = require('./routes/methods')
 const app = express();
 const port = 3000;
 
@@ -16,7 +17,7 @@ const swaggerOptions = {
       version: '1.0.0'
     }
   },
-  apis: ['./routes/users.js','./routes/products.js','./routes/orders.js'],
+  apis: ['./routes/users.js','./routes/products.js','./routes/orders.js','./routes/methods.js'],
   explorer: true
 };
 
@@ -31,6 +32,8 @@ app.use('/users',users);
 app.use('/products', products);
 
 app.use('/orders', orders);
+
+app.use('/methods', methods);
 
 
 

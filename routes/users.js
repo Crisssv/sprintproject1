@@ -19,11 +19,10 @@ const middle = require('../middlewares/middleware');
  *        description: Success
  */
 
-
-
 router.get('/', function(req,res){
    res.json(funcUsers.allUsers());
 })
+
 /**
 * @swagger
 * /users:
@@ -126,9 +125,58 @@ router.delete('/:id',function(req,res){
 
 });
 
-router.put('/:iduser/orders/:idorder', middle.userAdmin, function(req,res){
+/**
+* @swagger
+* /users/{iduser}:
+*  put:
+*    tags:
+*    - "User"
+*    summary: ""
+*    description: "Update user"
+*    operationId: "updateUser"
+*    paths:
+*    /users/{iduser}:
+*    consumes:
+*    produces:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required: true
+*      type: integer 
+*    - name : "nameLastName"
+*      description: "nameLastName"
+*      in: formData
+*      required: true
+*      type: string 
+*    - name : "phone"
+*      description: "phone"
+*      in: formData
+*      required: true
+*      type: integer 
+*    - name : "adress"
+*      description: "adress"
+*      in: formData
+*      required: true
+*      type: string
+*    - name : "password"
+*      description: "password"
+*      in: formData
+*      required: true
+*      type: string
+*    - name : "role"
+*      description: "role"
+*      in: formData
+*      required: true
+*      type: string
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
 
+router.put('/:iduser', function(req,res){
 
+res.json(funcUsers.updateUser(req.params.iduser,req.body));
 
 });
 
