@@ -118,10 +118,33 @@ router.get('/:id/allOrders', middle.registerUser,  function(req,res){
     res.json(funcUsers.allProducts());
 })
 
+/**
+* @swagger
+* /users/{iduser}:
+*  delete:
+*    tags:
+*    - "User"
+*    summary: ""
+*    description: "Delete user"
+*    operationId: "deleteUser"
+*    paths:
+*    /users/{iduser}:
+*    consumes:
+*    produces:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required: true
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
 
-router.delete('/:id',function(req,res){
+router.delete('/:iduser',function(req,res){
 
-    res.json(funcUsers.deleteUser(req.params.id));
+    res.json(funcUsers.deleteUser(req.params.iduser));
 
 });
 

@@ -15,12 +15,50 @@ const funcP = require('../controllers/products');
  *      200:
  *        description: Success
  */
-router.get('/', function(req,res){
+
+ router.get('/', function(req,res){
 
     res.json({'products':products})
 
 
 })
+
+/**
+* @swagger
+* /products/:
+*  post:
+*    tags:
+*    - "Product"
+*    summary: ""
+*    description: "Create a new Product"
+*    operationId: "CreateANewProduct"
+*    paths:
+*    /orders/:
+*    parameters:
+*    - name : "name"
+*      description: "product name" 
+*      in: formData
+*      required:
+*      type: string 
+*    - name : "price"
+*      description: "price" 
+*      in: formData
+*      required:
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.post('/', function(req,res){
+
+    res.json(funcP.newProduct(req.body));
+
+})
+
+
+
+
 
 /**
 * @swagger

@@ -37,9 +37,9 @@ const allUsers = () => {
     return users;
 }
 
-const deleteUser = (id) => {
+const deleteUser = (iduser) => {
 
-    users = users.filter(user => user.id != id);
+    users = users.filter(user => user.id != iduser);
     return "Usuario borrado correctamente";
 
 }
