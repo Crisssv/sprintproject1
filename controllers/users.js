@@ -2,8 +2,8 @@ let users = require('../models/users');
 let products = require('../models/products');
 
 const searchEmail = (email) => {
-    let emailExists = users.find(user => user.email == email);
 
+    const emailExists = users.find(user => user.email == email);
     if (emailExists) {
         return true;
     }
@@ -15,16 +15,16 @@ const searchEmail = (email) => {
 const newUser = (newUser) => {
     
     if (!searchEmail(newUser.email)) {
-        let nUser = [{
+        let nUser = {
             "id": users.length + 1,
-            "username": newUser.name,
-            "nameLastName": newUser.lastName,
+            "username": newUser.username,
+            "nameLastName": newUser.nameLastName,
             "email": newUser.email,
             "phone": newUser.phone,
             "adress": newUser.adress,
             "password": newUser.password,
             "role": "user",
-        }];
+        };
         users.push(nUser);
         return users[users.length-1];
     } else {
@@ -35,10 +35,6 @@ const newUser = (newUser) => {
 
 const allUsers = () => {
     return users;
-}
-
-const allProducts = () => {
-    return products;
 }
 
 const deleteUser = (id) => {
@@ -103,7 +99,6 @@ exports.login = login;
 exports.searchUser = searchUser;
 exports.deleteUser = deleteUser;
 exports.allUsers = allUsers;
-exports.allProducts = allProducts;
 exports.searchUsername = searchUsername;
 exports.searchAdress = searchAdress;
 

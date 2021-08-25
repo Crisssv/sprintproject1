@@ -39,32 +39,32 @@ router.get('/', function(req,res){
 *    - name : "username"
 *      description: "name" 
 *      in: formData
-*      required:
+*      required: true
 *      type: string 
 *    - name : "nameLastName"
 *      description: "lastName"
 *      in: formData
-*      required:
+*      required: true
 *      type: string 
 *    - name : "email"
 *      description: "email"
 *      in: formData
-*      required:
+*      required: true
 *      type: string  
 *    - name : "phone"
 *      description: "phone"
 *      in: formData
-*      required:
-*      type: string 
+*      required: true
+*      type: integer 
 *    - name : "adress"
 *      description: "adress"
 *      in: formData
-*      required:
+*      required: true
 *      type: string
 *    - name : "password"
 *      description: "password"
 *      in: formData
-*      required:
+*      required: true
 *      type: string
 *    responses:
 *      "200":
@@ -93,12 +93,12 @@ router.post('/', function(req,res){
 *    - name : "username"
 *      description: "username or email" 
 *      in: formData
-*      required:
+*      required: true
 *      type: string 
 *    - name : "password"
 *      description: "password"
 *      in: formData
-*      required:
+*      required: true
 *      type: string
 *    responses:
 *      "200":
