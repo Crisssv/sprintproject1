@@ -17,6 +17,12 @@ const newProduct = (product) => {
 
 }
 
+const searchProduct = (idproduct) => {
+
+    return products.find(product => product.id == idproduct);
+
+}
+
 const searchIndexproduct = (productid) => {
 
     return products.findIndex(product => product.id == productid);
@@ -48,3 +54,4 @@ const deleteProduct = (productid) => {
 exports.newProduct = newProduct;
 exports.editProduct = editProduct;
 exports.deleteProduct = deleteProduct;
+exports.searchProduct = searchProduct;

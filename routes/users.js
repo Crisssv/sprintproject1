@@ -13,7 +13,7 @@ const middle = require('../middlewares/middleware');
  *  get:
  *    tags:
  *    - "User"
- *    description: lista de todos los usuarios de la base de datos
+ *    description: All Users
  *    responses:
  *      200:
  *        description: Success
@@ -76,42 +76,6 @@ router.post('/', function(req,res){
     res.json(funcUsers.newUser(req.body));
 
 })
-
-/**
-* @swagger
-* /users/login:
-*  post:
-*    tags:
-*    - "User"
-*    summary: "Login"
-*    description: "Login"
-*    operationId: "Login"
-*    consumes:
-*    produces:
-*    parameters:
-*    - name : "username"
-*      description: "username or email" 
-*      in: formData
-*      required: true
-*      type: string 
-*    - name : "password"
-*      description: "password"
-*      in: formData
-*      required: true
-*      type: string
-*    responses:
-*      "200":
-*      desciption: Sucess   
-*/
-
-router.post('/login', function(req,res){
-    
-    res.json(funcUsers.login(req.body.username, req.body.password));
-    
-
-})
-
-
 
 router.get('/:id/allOrders', middle.registerUser,  function(req,res){
 
@@ -199,9 +163,52 @@ router.delete('/:iduser',function(req,res){
 
 router.put('/:iduser', function(req,res){
 
-res.json(funcUsers.updateUser(req.params.iduser,req.body));
+    res.json(funcUsers.updateUser(req.params.iduser,req.body));
+    
+    });
 
-});
+
+
+
+
+/**
+* @swagger
+* /users/login:
+*  post:
+*    tags:
+*    - "User"
+*    summary: "Login"
+*    description: "Login"
+*    operationId: "Login"
+*    consumes:
+*    produces:
+*    parameters:
+*    - name : "username"
+*      description: "username or email" 
+*      in: formData
+*      required: true
+*      type: string 
+*    - name : "password"
+*      description: "password"
+*      in: formData
+*      required: true
+*      type: string
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.post('/login', function(req,res){
+    
+    res.json(funcUsers.login(req.body.username, req.body.password));
+    
+
+})
+
+
+
+
+
 
 
 

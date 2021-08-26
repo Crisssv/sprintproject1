@@ -56,6 +56,75 @@ router.post('/', function(req,res){
 
 })
 
+/**
+* @swagger
+* /products/{idproduct}:
+*  delete:
+*    tags:
+*    - "Product"
+*    summary: ""
+*    description: "Delete Product"
+*    operationId: "DeleteProduct"
+*    paths:
+*    /products/{idproduct}:
+*    parameters:
+*    - name : "idproduct"
+*      description: "idproduct" 
+*      in: path
+*      required: true
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.delete('/:idproduct', function(req,res){
+    
+    res.json(funcP.deleteProduct(req.params.idproduct));
+
+});
+
+
+/**
+* @swagger
+* /products/{idproduct}:
+*  put:
+*    tags:
+*    - "Product"
+*    summary: ""
+*    description: "Update Product"
+*    operationId: "UpdateProduct"
+*    paths:
+*    /products/{idproduct}:
+*    parameters:
+*    - name : "idproduct"
+*      description: "idproduct" 
+*      in: path
+*      required: true
+*      type: integer 
+*    - name : "name"
+*      description: "name" 
+*      in: formData
+*      required: true
+*      type: string
+*    - name : "price"
+*      description: "price" 
+*      in: formData
+*      required: true
+*      type: integer  
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.put('/:idproduct', function(req,res){
+    
+    res.json(funcP.editProduct(req.params.idproduct,req.body));
+
+});
+
+
+
 
 
 

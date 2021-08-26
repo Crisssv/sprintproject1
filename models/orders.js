@@ -4,7 +4,7 @@ let orders = [
         "status": 1,
         "time": 12,
         "number": 3,
-        "detail": [1,2,3,],
+        "detail": [1,2,3],
         "total": 999,
         "method": 'tarjeta',
         "username": 2,
