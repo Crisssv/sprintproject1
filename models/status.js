@@ -1,21 +1,26 @@
 let status = [
     {
       "id": 1,
-      "name": "confirmado",
+      "name": "Nuevo",
 
     },
     {
         "id": 2,
+        "name": "Confirmado",
+  
+      },
+    {
+        "id": 3,
         "name": "En preparacion"   
 
     },
     {
-        "id": 3,
+        "id": 4,
         "name": "En camino",
 
     },
     {
-        "id": 4,
+        "id": 5,
         "name": "Entregado"  
 
     }

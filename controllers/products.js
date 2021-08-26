@@ -23,6 +23,12 @@ const searchProduct = (idproduct) => {
 
 }
 
+const searchProductName = (nameproduct) => {
+
+    return products.find(product => product.name == nameproduct).name;
+
+}
+
 const searchIndexproduct = (productid) => {
 
     return products.findIndex(product => product.id == productid);
@@ -55,3 +61,4 @@ exports.newProduct = newProduct;
 exports.editProduct = editProduct;
 exports.deleteProduct = deleteProduct;
 exports.searchProduct = searchProduct;
+exports.searchProductName = searchProductName;

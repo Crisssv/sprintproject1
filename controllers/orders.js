@@ -3,6 +3,7 @@ const status = require('../models/status');
 const funcU = require('../controllers/users')
 const funcP = require('../controllers/products')
 const funcS = require('../controllers/status')
+const funcM = require('../controllers/methods')
 
 
 const serachOrders = (iduser) => {
@@ -48,22 +49,27 @@ const arrayProducts = (productListId) => {
     return arrayProducts;
 }
 
-const productName = (prodN) => {
-    let prodName = [];
-    
-    for (let i = 0; i < prodN.length; i++) {
+const productName = (productListId) => {
 
-        prodName.push(arrayProducts(prodN[i]).name);
+    let arrayProducts = [];
+    for (let i = 0; i < productListId.length; i++) {
+
+        if (funcP.searchProduct(productListId[i])) {
+
+            arrayProducts.push(funcP.searchProduct(productListId[i]).name);
+
+        }
 
     }
     
-    return prodName;
+    return arrayProducts;
 
 }
 
 const userViewOrder = (order) => {
 
-    
+
+
     let orderUser = {
 
         "status": funcS.searchStatus(order.status).name,
@@ -71,8 +77,8 @@ const userViewOrder = (order) => {
         "number": order.number,
         "detail": productName(order.detail),
         "total": order.total,
-        "method": order.method,
-        "username": order.username,
+        "method": funcM.searchMethod(order.method).name,
+        "username": funcU.searchUsername(order.username),
         "adress": order.adress,
 
     }
@@ -97,11 +103,15 @@ const newOrder = (order, iduser) => {
     };
 
     orders.push(nOrders);
-    console.log(userViewOrder(nOrders));
-    return orders;
+    return userViewOrder(nOrders);
 
 }
 
+const searchOrderId = (orderid) => {
+
+    return orders.find(order => order.id == orderid);
+
+}
 
 const searchIndexOrder = (orderid) => {
 
@@ -118,10 +128,22 @@ const changeStatus = (idOrder, status) => {
 
 }
 
+const changeOrder = (idorder, newOrder) => {
+    let userOrder = searchOrderId(idorder);
+    if (userOrder.status == 1 ){
+        return "El pedido Puede ser modificado"
+    }else{
+        return"El pedido no puede ser modificado"
+    }
+
+}
+
 
 
 exports.serachOrders = serachOrders;
 exports.newOrder = newOrder;
 exports.allOrders = allOrders;
 exports.changeStatus = changeStatus;
+exports.changeOrder = changeOrder;
+
 

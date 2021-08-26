@@ -27,7 +27,7 @@ let orders = [
     },
     {
         "id": 3,    
-        "status": 1,
+        "status": 3,
         "time": 12,
         "number": 3,
         "detail": [1,2,3,],

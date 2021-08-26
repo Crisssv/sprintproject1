@@ -164,6 +164,44 @@ router.delete('/:id',function(req,res){
 
 });
 
+/**
+* @swagger
+* /orders/changeOrder/{iduser}/{idorder}:
+*  put:
+*    tags:
+*    - "Order"
+*    summary: ""
+*    description: "User Change Order"
+*    operationId: "UserChangeStatus"
+*    paths:
+*    /orders/changeOrder/{iduser}/{idorder}:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required:
+*      type: integer 
+*    - name : "idorder"
+*      description: "idorder" 
+*      in: path
+*      required:
+*      type: integer 
+*    - name : "status"
+*      description: "status" 
+*      in: formData
+*      required:
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.put('/changeOrder/:iduser/:idorder', middle.registerUser, function(req,res){
+   // console.log(req.params.iduser);
+    res.json(funcO.changeOrder(req.params.idorder,req.body.status));
+
+});
+
 
 
 module.exports = router;
