@@ -84,7 +84,7 @@ router.get('/:iduser', middle.registerUser, function(req,res){
 *      desciption: Sucess   
 */
 router.post('/:iduser', middle.registerUser, function (req,res){
-    
+    console.log(req.body);
     res.json(funcO.newOrder(req.body,req.params.iduser));
     
 
@@ -162,6 +162,7 @@ router.delete('/:id',function(req,res){
     
 
 });
+
 
 
 

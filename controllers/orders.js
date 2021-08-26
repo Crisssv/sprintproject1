@@ -22,8 +22,6 @@ const allOrders = () =>{
     return orders;
 }
 
-
-
 const newOrder = (order,iduser) => {
     
     let hour = new Date();
