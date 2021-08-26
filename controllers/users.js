@@ -48,7 +48,6 @@ const login = (username, password) => {
 
     let usuariovalido = users.find(user => ((user.username == username || user.email == username) && (user.password == password)));
 
-    console.log(usuariovalido);
     if (usuariovalido) {
         return "usuario VALIDO"
     } else {

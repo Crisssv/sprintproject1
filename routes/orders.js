@@ -19,8 +19,9 @@ router.get('/', function(req,res){
 
     res.json(funcO.allOrders());
 
-
 })
+
+
 
 /**
 * @swagger
@@ -84,7 +85,7 @@ router.get('/:iduser', middle.registerUser, function(req,res){
 *      desciption: Sucess   
 */
 router.post('/:iduser', middle.registerUser, function (req,res){
-    console.log(req.body);
+    
     res.json(funcO.newOrder(req.body,req.params.iduser));
     
 
@@ -160,6 +161,49 @@ router.put('/:iduser/:idorder', middle.userAdmin, function(req,res){
 router.delete('/:id',function(req,res){
 
     
+
+});
+
+/**
+* @swagger
+* /orders/changeOrder/{iduser}/{idorder}:
+*  put:
+*    tags:
+*    - "Order"
+*    summary: ""
+*    description: "User Change Order"
+*    operationId: "UserChangeStatus"
+*    paths:
+*    /orders/changeOrder/{iduser}/{idorder}:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required:
+*      type: integer 
+*    - name : "idorder"
+*      description: "idorder" 
+*      in: path
+*      required:
+*      type: integer 
+*    - name : "detail"
+*      description: "detail" 
+*      in: formData
+*      required:
+*      type: array 
+*    - name : "method"
+*      description: "method"
+*      in: formData
+*      required:
+*      type: string
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.put('/changeOrder/:iduser/:idorder', middle.registerUser, function(req,res){
+  
+    res.json(funcO.changeOrder(req.params.idorder,req.body));
 
 });
 

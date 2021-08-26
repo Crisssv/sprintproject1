@@ -4,7 +4,7 @@ let orders = [
         "status": 1,
         "time": 12,
         "number": 3,
-        "detail": [1,2,3,],
+        "detail": [1,2,3],
         "total": 999,
         "method": 'tarjeta',
         "username": 2,
@@ -27,7 +27,7 @@ let orders = [
     },
     {
         "id": 3,    
-        "status": 1,
+        "status": 3,
         "time": 12,
         "number": 3,
         "detail": [1,2,3,],

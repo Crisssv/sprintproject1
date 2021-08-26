@@ -13,9 +13,9 @@ const indexMethods = (idMethod) => {
 
 }
 
-const searchMethodName = (idMethod) => {
+const searchMethod = (idMethod) => {
 
-    return methods[indexMethods(idMethod)].name;
+    return methods[indexMethods(idMethod)];
 
 }
 
@@ -50,7 +50,7 @@ const deleteMethod = (idmethod) => {
 
 exports.allMethods = allMethods;
 exports.indexMethods = indexMethods;
-exports.searchMethodName = searchMethodName;
+exports.searchMethod = searchMethod;
 exports.newMethod = newMethod;
 exports.editMethod = editMethod;
 exports.deleteMethod = deleteMethod;
