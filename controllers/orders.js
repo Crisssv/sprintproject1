@@ -5,19 +5,21 @@ const funcS = require('../controllers/status')
 const funcM = require('../controllers/methods')
 
 
-const serachOrders = (iduser) => {
+const searchOrders = (iduser) => {
 
 
     let userOrders = [];
+    
     for (let i = 0; i < orders.length; i++) {
         if (orders[i].username == iduser) {
-            userOrders.push(orders[i]);
+            userOrders.push(userViewOrder(orders[i]));
         }
     }
 
     return userOrders;
 
 }
+
 
 const allOrders = () => {
     return orders;
@@ -69,6 +71,7 @@ const arrayProducts = (productListId) => {
 
 const userViewOrder = (order) => {
 
+    
 
     let orderUser = {
 
@@ -79,7 +82,7 @@ const userViewOrder = (order) => {
         "total": order.total,
         "method": funcM.searchMethod(order.method).name,
         "username": funcU.searchUsername(order.username),
-        "adress": order.adress,
+        "adress": funcU.searchAdress(order.username),
 
     }
     return orderUser;
@@ -99,7 +102,7 @@ const newOrder = (order, iduser) => {
         "total": total,
         "method": order.method,
         "username": iduser,
-        "adress": funcU.searchAdress(iduser),
+        "adress": iduser,
     };
 
     orders.push(nOrders);
@@ -144,7 +147,7 @@ const changeOrder = (idorder, newOrder) => {
 
 
 
-exports.serachOrders = serachOrders;
+exports.searchOrders = searchOrders;
 exports.newOrder = newOrder;
 exports.allOrders = allOrders;
 exports.changeStatus = changeStatus;

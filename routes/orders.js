@@ -48,7 +48,7 @@ router.get('/', function(req,res){
 router.get('/:iduser', middle.registerUser, function(req,res){
     
     
-    res.json(funcO.serachOrders(req.params.iduser));
+    res.json(funcO.searchOrders(req.params.iduser));
 
 
 })
