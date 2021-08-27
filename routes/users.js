@@ -13,7 +13,8 @@ const middle = require('../middlewares/middleware');
  *  get:
  *    tags:
  *    - "User"
- *    description: All Users
+ *    summary: "READ "
+ *    operationId: "READ"
  *    responses:
  *      200:
  *        description: Success
@@ -29,9 +30,8 @@ router.get('/', function(req,res){
 *  post:
 *    tags:
 *    - "User"
-*    summary: "Add New User"
-*    description: "Add new user"
-*    operationId: "addUser"
+*    summary: "CREATE - EP.a"
+*    operationId: "CREATE"
 *    consumes:
 *    produces:
 *    parameters:
@@ -77,10 +77,6 @@ router.post('/', function(req,res){
 
 })
 
-router.get('/:id/allOrders', middle.registerUser,  function(req,res){
-
-    res.json(funcUsers.allProducts());
-})
 
 /**
 * @swagger
@@ -88,9 +84,9 @@ router.get('/:id/allOrders', middle.registerUser,  function(req,res){
 *  delete:
 *    tags:
 *    - "User"
-*    summary: ""
-*    description: "Delete user"
-*    operationId: "deleteUser"
+*    summary: "DELETE"
+*    description: "DELETE"
+*    operationId: "DELETE"
 *    paths:
 *    /users/{iduser}:
 *    consumes:
@@ -118,7 +114,7 @@ router.delete('/:iduser',function(req,res){
 *  put:
 *    tags:
 *    - "User"
-*    summary: ""
+*    summary: "UPDATE"
 *    description: "Update user"
 *    operationId: "updateUser"
 *    paths:
@@ -177,7 +173,7 @@ router.put('/:iduser', function(req,res){
 *  post:
 *    tags:
 *    - "User"
-*    summary: "Login"
+*    summary: "LOGIN - E.P.b"
 *    description: "Login"
 *    operationId: "Login"
 *    consumes:

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-let products = require('../models/products');
 const middle = require('../middlewares/middleware');
 const funcP = require('../controllers/products');
 
@@ -10,6 +9,7 @@ const funcP = require('../controllers/products');
  *  get:
  *    tags:
  *    - "Product"
+ *    summary: "READ" 
  *    description: Show all products
  *    responses:
  *      200:
@@ -18,7 +18,7 @@ const funcP = require('../controllers/products');
 
  router.get('/', function(req,res){
 
-    res.json({'products':products})
+    res.json(funcP.allProducts());
 
 
 })
@@ -29,7 +29,7 @@ const funcP = require('../controllers/products');
 *  post:
 *    tags:
 *    - "Product"
-*    summary: ""
+*    summary: "CREATE"
 *    description: "Create a new Product"
 *    operationId: "CreateANewProduct"
 *    paths:
@@ -62,7 +62,7 @@ router.post('/', function(req,res){
 *  delete:
 *    tags:
 *    - "Product"
-*    summary: ""
+*    summary: "DELETE"
 *    description: "Delete Product"
 *    operationId: "DeleteProduct"
 *    paths:
@@ -91,7 +91,7 @@ router.delete('/:idproduct', function(req,res){
 *  put:
 *    tags:
 *    - "Product"
-*    summary: ""
+*    summary: "UPDATE"
 *    description: "Update Product"
 *    operationId: "UpdateProduct"
 *    paths:
@@ -125,17 +125,13 @@ router.put('/:idproduct', function(req,res){
 
 
 
-
-
-
-
 /**
 * @swagger
 * /products/{iduser}:
 *  post:
 *    tags:
 *    - "Product"
-*    summary: ""
+*    summary: "ADMIN - E.P.f"
 *    description: "Admin create a new Product"
 *    operationId: "AdminCreateANewProduct"
 *    paths:
@@ -162,10 +158,9 @@ router.put('/:idproduct', function(req,res){
 */
 
 router.post('/:iduser', middle.userAdmin,  function (req,res){
-   
+
     res.json(funcP.newProduct(req.body));
     
-
 })
 
 /**
@@ -174,7 +169,7 @@ router.post('/:iduser', middle.userAdmin,  function (req,res){
 *  put:
 *    tags:
 *    - "Product"
-*    summary: ""
+*    summary: "ADMIN - E.P.g"
 *    description: "Admin Edit Product"
 *    operationId: "AdminEditProduct"
 *    paths:
@@ -255,7 +250,7 @@ router.put('/:idproduct',  function(req,res){
 *  delete:
 *    tags:
 *    - "Product"
-*    summary: ""
+*    summary: "ADMIN - E.P.h"
 *    description: "Admin delete Product"
 *    operationId: "AdminDeleteProduct"
 *    paths:

@@ -7,9 +7,8 @@ const funcM = require('../controllers/methods')
 
 const searchOrders = (iduser) => {
 
-
     let userOrders = [];
-    
+
     for (let i = 0; i < orders.length; i++) {
         if (orders[i].username == iduser) {
             userOrders.push(userViewOrder(orders[i]));
@@ -19,7 +18,6 @@ const searchOrders = (iduser) => {
     return userOrders;
 
 }
-
 
 const allOrders = () => {
     return orders;
@@ -48,11 +46,20 @@ const productName = (productListId) => {
         }
 
     }
-    
+
     return arrayProducts;
 
 }
 
+const addAdress = (order, iduser) => {
+
+    if (order.adress != null){
+       return order.adress;  
+    }else{
+       return funcU.searchAdress(iduser);  
+    } 
+
+}
 
 const arrayProducts = (productListId) => {
     let arrayProducts = [];
@@ -68,12 +75,9 @@ const arrayProducts = (productListId) => {
     return arrayProducts;
 }
 
-
 const userViewOrder = (order) => {
 
-    
-
-    let orderUser = {
+  let orderUser = {
 
         "status": funcS.searchStatus(order.status).name,
         "time": order.time,
@@ -82,27 +86,32 @@ const userViewOrder = (order) => {
         "total": order.total,
         "method": funcM.searchMethod(order.method).name,
         "username": funcU.searchUsername(order.username),
-        "adress": funcU.searchAdress(order.username),
+        "adress": order.adress,
 
     }
     return orderUser;
 
 }
 
-const newOrder = (order, iduser) => {
+const getTime = ()=> {
+
     let hour = new Date();
-    time = hour.getHours() + ':' + hour.getMinutes();
-    let total = totalPrice(order.detail);
+    let time = hour.getHours() + ':' + hour.getMinutes();
+    return time;
+}
+
+const newOrder = (order, iduser) => {
+
     let nOrders = {
         "id": orders.length + 1,
         "status": 1,
-        "time": time,
+        "time": getTime(),
         "number": orders.length + 1,
         "detail": order.detail,
-        "total": total,
+        "total": totalPrice(order.detail),
         "method": order.method,
         "username": iduser,
-        "adress": iduser,
+        "adress": addAdress(order,iduser),
     };
 
     orders.push(nOrders);
@@ -111,7 +120,7 @@ const newOrder = (order, iduser) => {
 }
 
 const searchOrderId = (orderid) => {
-
+    console.log(orderid);
     return orders.find(order => order.id == orderid);
 
 }
@@ -132,16 +141,24 @@ const changeStatus = (idOrder, status) => {
 }
 
 const changeOrder = (idorder, newOrder) => {
-    let userOrder = searchOrderId(idorder);
-    if (userOrder.status == 1 ){
+
+    if (searchOrderId(idorder).status == 1) {
         const index = searchIndexOrder(idorder);
         orders[index].detail = newOrder.detail;
         orders[index].method = newOrder.method;
-        orders[index].total =  totalPrice(orders[index].detail);
-        return userViewOrder( orders[index]);
-    }else{
-        return"El pedido no puede ser modificado"
+        orders[index].adress = newOrder.adress;
+        orders[index].total = totalPrice(orders[index].detail);
+        return userViewOrder(orders[index]);
+    } else {
+        return "El pedido solo puede ser modificado si su estado es NUEVO"
     }
+
+}
+
+const deleteOrder = (idorder) => {
+
+    orders = orders.filter(order => order.id != idorder);
+    return orders;
 
 }
 
@@ -152,5 +169,6 @@ exports.newOrder = newOrder;
 exports.allOrders = allOrders;
 exports.changeStatus = changeStatus;
 exports.changeOrder = changeOrder;
+exports.deleteOrder = deleteOrder;
 
 

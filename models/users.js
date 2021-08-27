@@ -13,11 +13,11 @@ let users = [
                 },
                 {
                     "id":2,
-                    "username": 'User2',
-                    "nameLastName": 'User2',
-                    "email": 'User2@gmail.com',
-                    "phone": 15487897,
-                    "adress": 'Puerto espaniol 1079',
+                    "username": 'Claudio',
+                    "nameLastName": 'Varas',
+                    "email": 'claudio@gmail.com',
+                    "phone": 15403938,
+                    "adress": 'San Martin 213',
                     "password": 1234,
                     "role": "user",
 

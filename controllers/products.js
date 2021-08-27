@@ -1,7 +1,9 @@
 let products = require('../models/products');
 
 
-
+const allProducts = () => {
+    return products;
+}
 
 const newProduct = (product) => {
     
@@ -35,8 +37,6 @@ const searchIndexproduct = (productid) => {
 
 }
 
-
-
 const editProduct = (productid, product) => {
 
     const index = searchIndexproduct(productid);
@@ -56,7 +56,7 @@ const deleteProduct = (productid) => {
 }
 
 
-
+exports.allProducts = allProducts;
 exports.newProduct = newProduct;
 exports.editProduct = editProduct;
 exports.deleteProduct = deleteProduct;

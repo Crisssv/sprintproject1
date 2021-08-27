@@ -1,10 +1,10 @@
 let users = require('../models/users');
-let products = require('../models/products');
 
+//NO DUPLICATE EMAIL - E.P.l
 const searchEmail = (email) => {
 
-    const emailExists = users.find(user => user.email == email);
-    if (emailExists) {
+    
+    if (users.find(user => user.email == email)) {
         return true;
     }
     else {
@@ -46,9 +46,7 @@ const deleteUser = (iduser) => {
 
 const login = (username, password) => {
 
-    let usuariovalido = users.find(user => ((user.username == username || user.email == username) && (user.password == password)));
-
-    if (usuariovalido) {
+    if (users.find(user => ((user.username == username || user.email == username) && (user.password == password)))) {
         return "usuario VALIDO"
     } else {
         return "usuario NO VALIDO";
@@ -66,13 +64,6 @@ const searchAdress = (userid) => {
     return users[searchIndex(userid)].adress;
 
 }
-
-const searchNameEmail = (userid) => {
-
-    return users[searchIndex(userid)].email;
-
-}
-
 
 const searchUsername = (userid) => {
 

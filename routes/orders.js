@@ -10,6 +10,7 @@ const middle = require('../middlewares/middleware');
  *  get:
  *    tags:
  *    - "Order"
+ *    summary: "READ" 
  *    description: All orders 
  *    responses:
  *      200:
@@ -29,7 +30,7 @@ router.get('/', function(req,res){
 *  get:
 *    tags:
 *    - "Order"
-*    summary: ""
+*    summary: "Users Orders - E.P.d"
 *    description: "Show All Orders of the user"
 *    operationId: "ShowAllOrdersOfTheUser"
 *    paths:
@@ -59,7 +60,7 @@ router.get('/:iduser', middle.registerUser, function(req,res){
 *  post:
 *    tags:
 *    - "Order"
-*    summary: ""
+*    summary: "User make Order - E.P.c - r"
 *    description: "Make an Order"
 *    operationId: "makeOrder"
 *    paths:
@@ -80,6 +81,11 @@ router.get('/:iduser', middle.registerUser, function(req,res){
 *      in: formData
 *      required:
 *      type: string
+*    - name : "adress"
+*      description: "adress"
+*      in: formData
+*      required:
+*      type: string
 *    responses:
 *      "200":
 *      desciption: Sucess   
@@ -97,7 +103,7 @@ router.post('/:iduser', middle.registerUser, function (req,res){
 *  get:
 *    tags:
 *    - "Order"
-*    summary: ""
+*    summary: "ADMIN - E.P.e"
 *    description: "Show All Orders ADMIN"
 *    operationId: "Show All Orders Admin"
 *    paths:
@@ -126,7 +132,7 @@ router.get('/admin/:iduser', middle.userAdmin, function(req,res){
 *  put:
 *    tags:
 *    - "Order"
-*    summary: ""
+*    summary: "ADMIN - E.P.e"
 *    description: "Admin Change Status"
 *    operationId: "AdminChangeStatus"
 *    paths:
@@ -158,9 +164,31 @@ router.put('/:iduser/:idorder', middle.userAdmin, function(req,res){
 
 });
 
-router.delete('/:id',function(req,res){
+/**
+* @swagger
+* /orders/{idorder}:
+*  delete:
+*    tags:
+*    - "Order"
+*    summary: "DELETE"
+*    description: "Delete Order"
+*    operationId: "DeleteOrder"
+*    paths:
+*    /orders/{idorder}:
+*    parameters:
+*    - name : "idorder"
+*      description: "idorder" 
+*      in: path
+*      required:
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
 
-    
+router.delete('/:idorder',function(req,res){
+
+    res.json(funcO.deleteOrder(req.params.idorder));
 
 });
 
@@ -170,7 +198,7 @@ router.delete('/:id',function(req,res){
 *  put:
 *    tags:
 *    - "Order"
-*    summary: ""
+*    summary: "User Change Order - E.P.s-t"
 *    description: "User Change Order"
 *    operationId: "UserChangeStatus"
 *    paths:
@@ -190,23 +218,27 @@ router.delete('/:id',function(req,res){
 *      description: "detail" 
 *      in: formData
 *      required:
-*      type: array 
+*      type: array
 *    - name : "method"
 *      description: "method"
 *      in: formData
 *      required:
-*      type: string
+*      type: string 
+*    - name : "adress"
+*      description: "adress"
+*      in: formData
+*      required:
+*      type: string 
 *    responses:
 *      "200":
 *      desciption: Sucess   
 */
 
 router.put('/changeOrder/:iduser/:idorder', middle.registerUser, function(req,res){
-  
+
     res.json(funcO.changeOrder(req.params.idorder,req.body));
 
 });
-
 
 
 

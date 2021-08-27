@@ -30,7 +30,7 @@ router.get('/', function (req,res){
 *  post:
 *    tags:
 *    - "Method"
-*    summary: ""
+*    summary: "ADMIN - E.P.n"
 *    description: "Admin create a new Method"
 *    operationId: "AdminCreateANewMethod"
 *    paths:
@@ -64,8 +64,8 @@ router.post('/:iduser', middle.userAdmin,  function (req,res){
 *  put:
 *    tags:
 *    - "Method"
-*    summary: ""
-*    description: "Admin edits a new Method"
+*    summary: "ADMIN - E.P.o"
+*    description: "Admin edits Method"
 *    operationId: "AdminCreateANewMethod"
 *    paths:
 *    /methods/{iduser}/{idmethod}:
@@ -102,7 +102,7 @@ router.put('/:iduser/:idmethod', middle.userAdmin, function(req,res){
 *  delete:
 *    tags:
 *    - "Method"
-*    summary: ""
+*    summary: "ADMIN - E.P.p"
 *    description: "Admin delete a Method"
 *    operationId: "AdminDeleteMethod"
 *    paths:
@@ -135,7 +135,7 @@ router.delete('/:iduser/:idmethod', middle.userAdmin, function(req,res){
 *  get:
 *    tags:
 *    - "Method"
-*    summary: ""
+*    summary: "ADMIN - E.P.q"
 *    description: "Admin get all Methods"
 *    operationId: "AdminGetAllMethods"
 *    paths:
