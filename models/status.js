@@ -1,7 +1,7 @@
 let status = [
     {
       "id": 1,
-      "name": "Nuevo",
+      "name": "Pendiente",
 
     },
     {
@@ -16,7 +16,7 @@ let status = [
     },
     {
         "id": 4,
-        "name": "En camino",
+        "name": "Enviado",
 
     },
     {
