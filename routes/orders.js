@@ -39,7 +39,7 @@ router.get('/', function(req,res){
 *    - name : "iduser"
 *      description: "iduser" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    responses:
 *      "200":
@@ -69,17 +69,17 @@ router.get('/:iduser', middle.registerUser, function(req,res){
 *    - name : "iduser"
 *      description: "iduser" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    - name : "detail"
 *      description: "detail" 
 *      in: formData
-*      required:
+*      required: true
 *      type: array 
 *    - name : "method"
 *      description: "method"
 *      in: formData
-*      required:
+*      required: true
 *      type: string
 *    - name : "adress"
 *      description: "adress"
@@ -112,7 +112,7 @@ router.post('/:iduser', middle.registerUser, function (req,res){
 *    - name : "iduser"
 *      description: "iduser" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    responses:
 *      "200":
@@ -141,17 +141,17 @@ router.get('/admin/:iduser', middle.userAdmin, function(req,res){
 *    - name : "iduser"
 *      description: "iduser" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    - name : "idorder"
 *      description: "idorder" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    - name : "status"
 *      description: "status" 
 *      in: formData
-*      required:
+*      required: true
 *      type: integer 
 *    responses:
 *      "200":
@@ -179,7 +179,7 @@ router.put('/:iduser/:idorder', middle.userAdmin, function(req,res){
 *    - name : "idorder"
 *      description: "idorder" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    responses:
 *      "200":
@@ -207,27 +207,27 @@ router.delete('/:idorder',function(req,res){
 *    - name : "iduser"
 *      description: "iduser" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    - name : "idorder"
 *      description: "idorder" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    - name : "detail"
 *      description: "detail" 
 *      in: formData
-*      required:
+*      required: true
 *      type: array
 *    - name : "method"
 *      description: "method"
 *      in: formData
-*      required:
+*      required: true
 *      type: string 
 *    - name : "adress"
 *      description: "adress"
 *      in: formData
-*      required:
+*      required: true
 *      type: string 
 *    responses:
 *      "200":

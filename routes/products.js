@@ -38,12 +38,12 @@ const funcP = require('../controllers/products');
 *    - name : "name"
 *      description: "product name" 
 *      in: formData
-*      required:
+*      required: true
 *      type: string 
 *    - name : "price"
 *      description: "price" 
 *      in: formData
-*      required:
+*      required: true
 *      type: integer 
 *    responses:
 *      "200":
@@ -140,17 +140,17 @@ router.put('/:idproduct', function(req,res){
 *    - name : "iduser"
 *      description: "iduser" 
 *      in: path
-*      required:
+*      required: true
 *      type: integer 
 *    - name : "name"
 *      description: "product name" 
 *      in: formData
-*      required:
+*      required: true
 *      type: string 
 *    - name : "price"
 *      description: "price" 
 *      in: formData
-*      required:
+*      required: true
 *      type: integer 
 *    responses:
 *      "200":

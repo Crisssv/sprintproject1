@@ -42,6 +42,6 @@ app.use('/methods', methods);
 
   app.listen(port, function() {
 
-    console.log(`Corriendo en http://localhost:${port}`);
+    console.log(`Corriendo en http://localhost:${port}/api-docs`);
 
   });
