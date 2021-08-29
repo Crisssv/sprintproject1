@@ -52,8 +52,8 @@ const productName = (productListId) => {
 }
 
 const addAdress = (order, iduser) => {
-
-    if (order.adress != null){
+    
+    if (order.adress){
        return order.adress;  
     }else{
        return funcU.searchAdress(iduser);  
