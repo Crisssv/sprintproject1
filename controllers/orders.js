@@ -120,7 +120,7 @@ const newOrder = (order, iduser) => {
 }
 
 const searchOrderId = (orderid) => {
-    console.log(orderid);
+  
     return orders.find(order => order.id == orderid);
 
 }

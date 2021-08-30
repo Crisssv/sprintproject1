@@ -7,7 +7,7 @@ let users = [
                     "phone": 15487897,
                     "adress": 'Puerto espaniol 1079',
                     "password": 1234,
-                    "role": "admin",
+                    "role": 1,
 
 
                 },
@@ -19,7 +19,7 @@ let users = [
                     "phone": 15403938,
                     "adress": 'San Martin 213',
                     "password": 1234,
-                    "role": "user",
+                    "role": 2,
 
 
                 }

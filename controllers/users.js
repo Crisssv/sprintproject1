@@ -23,7 +23,7 @@ const newUser = (newUser) => {
             "phone": newUser.phone,
             "adress": newUser.adress,
             "password": newUser.password,
-            "role": "user",
+            "role": 2,
         };
         users.push(nUser);
         return users[users.length - 1];

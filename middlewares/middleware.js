@@ -12,7 +12,7 @@ const userAdmin = (req,res,next) => {
 
     let userAdmin = users.filter(user => user.id == req.params.iduser);
     
-    if (userAdmin[0].role == "admin"){
+    if (userAdmin[0].role == 1){
         return next();
     }else{
         return res.sendStatus(401);
