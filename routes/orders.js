@@ -5,23 +5,33 @@ const middle = require('../middlewares/middleware');
 
 
 /**
- * @swagger
- * /orders:
- *  get:
- *    tags:
- *    - "Order"
- *    summary: "READ" 
- *    description: All orders 
- *    responses:
- *      200:
- *        description: Success
- */
-router.get('/', function(req,res){
+* @swagger
+* /orders/admin/{iduser}:
+*  get:
+*    tags:
+*    - "Order"
+*    summary: "ADMIN - E.P.e"
+*    description: "Show All Orders ADMIN"
+*    operationId: "Show All Orders Admin"
+*    paths:
+*    /orders/admin/{iduser}:
+*    parameters:
+*    - name : "iduser"
+*      description: "iduser" 
+*      in: path
+*      required: true
+*      type: integer 
+*    responses:
+*      "200":
+*      desciption: Sucess   
+*/
+
+router.get('/admin/:iduser', middle.userAdmin, function(req,res){
 
     res.json(funcO.allOrders());
 
-})
 
+})
 
 
 /**
@@ -97,34 +107,6 @@ router.post('/:iduser', middle.registerUser, function (req,res){
 
 })
 
-/**
-* @swagger
-* /orders/admin/{iduser}:
-*  get:
-*    tags:
-*    - "Order"
-*    summary: "ADMIN - E.P.e"
-*    description: "Show All Orders ADMIN"
-*    operationId: "Show All Orders Admin"
-*    paths:
-*    /orders/admin/{iduser}:
-*    parameters:
-*    - name : "iduser"
-*      description: "iduser" 
-*      in: path
-*      required: true
-*      type: integer 
-*    responses:
-*      "200":
-*      desciption: Sucess   
-*/
-
-router.get('/admin/:iduser', middle.userAdmin, function(req,res){
-
-    res.json(funcO.allOrders());
-
-
-})
 
 /**
 * @swagger

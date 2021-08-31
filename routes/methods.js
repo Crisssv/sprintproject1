@@ -3,25 +3,6 @@ const router = express.Router();
 const funcM = require('../controllers/methods');
 const middle = require('../middlewares/middleware');
 
-/**
-* @swagger
-* /methods/:
-*  get:
-*    tags:
-*    - "Method"
-*    summary: ""
-*    description: "Get All Methods"
-*    operationId: "GetAllMethods"
-*    responses:
-*      "200":
-*      desciption: Sucess   
-*/
-
-router.get('/', function (req,res){
-
-    res.json(funcM.allMethods());
-
-})
 
 
 /**
