@@ -132,7 +132,7 @@ const searchIndexOrder = (orderid) => {
 }
 
 const changeStatus = (idOrder, status) => {
-
+    
     const index = searchIndexOrder(idOrder);
     orders[index].status = status;
     return orders[index];
